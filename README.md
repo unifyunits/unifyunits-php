@@ -10,11 +10,16 @@ as decimal strings so PHP floating-point conversion does not alter precision.
 
 ## Install
 
-When published, install through Composer:
+Until the package is published on Packagist, add the GitHub repository to your
+application's Composer configuration and install the `v0.1` release:
 
 ```sh
-composer require unifyunits/unifyunits-laravel
+composer config repositories.unifyunits-laravel vcs https://github.com/unifyunits/unifyunits-php
+composer require unifyunits/unifyunits-laravel:^0.1
 ```
+
+After Packagist publication, the repository configuration step will no longer
+be needed.
 
 Laravel discovers the service provider automatically. Publish its configuration
 and set credentials in the application environment:
@@ -67,12 +72,21 @@ HTTP failures throw `UnifyUnits\Laravel\Exceptions\ApiException`, which offers
 `errorCode()`, `requestId()`, and `details()` helpers. Network and timeout
 exceptions from Laravel's HTTP client remain distinguishable from API errors.
 
-## Local development
+## Local development and tests
 
 ```sh
 composer install
 composer test
 ```
 
-Tests use Laravel's HTTP fake and contain no production credentials. Package
-release, Packagist publication, and live API verification are separate steps.
+Tests use Laravel's HTTP fake and contain no production credentials. They can
+be run on PHP 8.2 or newer with:
+
+```sh
+composer install
+composer test
+composer analyse
+```
+
+This package is released independently from the API. GitHub releases do not
+publish it to Packagist.
