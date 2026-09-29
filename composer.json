@@ -1,0 +1,21 @@
+{
+  "name": "unifyunits/unifyunits-laravel",
+  "description": "Laravel client for the UnifyUnits Measurement API",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": "^8.2",
+    "illuminate/contracts": "^10.0 || ^11.0 || ^12.0 || ^13.0",
+    "illuminate/http": "^10.0 || ^11.0 || ^12.0 || ^13.0",
+    "illuminate/support": "^10.0 || ^11.0 || ^12.0 || ^13.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^8.0 || ^9.0 || ^10.0",
+    "phpunit/phpunit": "^10.0 || ^11.0 || ^12.0"
+  },
+  "autoload": { "psr-4": { "UnifyUnits\\Laravel\\": "src/" } },
+  "autoload-dev": { "psr-4": { "UnifyUnits\\Laravel\\Tests\\": "tests/" } },
+  "extra": { "laravel": { "providers": ["UnifyUnits\\Laravel\\UnifyUnitsServiceProvider"] } },
+  "scripts": { "test": "phpunit", "analyse": "php -l src/UnifyUnitsClient.php" },
+  "config": { "sort-packages": true, "allow-plugins": { "php-http/discovery": true } }
+}
